@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:transfert/transaction/deposit.dart';
 
 class TransactionSection extends StatelessWidget {
   const TransactionSection({super.key});
@@ -29,7 +30,7 @@ class TransactionSection extends StatelessWidget {
                     width: 150,
                     height: 150,
                     decoration: BoxDecoration(
-                        color: Colors.white70,
+                        color: Color(0xDF283959),
                         borderRadius: BorderRadius.circular(10),
                         boxShadow: const [
                           BoxShadow(
@@ -38,13 +39,22 @@ class TransactionSection extends StatelessWidget {
                           )
                         ]
                     ),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Icon(const IconData(0xe040, fontFamily: 'MaterialIcons'), size: 50, color: Colors.cyan[800],),
-                        const SizedBox(height: 15),
-                        const Text("Dépôt", style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600))
-                      ],
+                    child: InkWell(
+                      onTap: () {
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                              builder: (context) => DepositPage()
+                          ),
+                        );
+                      },
+                      child: const Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Icon(Icons.arrow_downward, size: 50, color: Colors.white),
+                          SizedBox(height: 15),
+                          Text("Dépôt", style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600,color: Colors.white))
+                        ],
+                      ),
                     ),
                   ),
 
@@ -53,7 +63,7 @@ class TransactionSection extends StatelessWidget {
                     width: 150,
                     height: 150,
                     decoration: BoxDecoration(
-                        color: Colors.white70,
+                        color: Color(0xFF24A68E),
                         borderRadius: BorderRadius.circular(10),
                         boxShadow: const [
                           BoxShadow(
@@ -62,14 +72,47 @@ class TransactionSection extends StatelessWidget {
                           )
                         ]
                     ),
-                    child: Column(
+                    child: const Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Icon(const IconData(0xe043, fontFamily: 'MaterialIcons'), size: 50, color: Colors.cyan[800],),
-                        const SizedBox(height: 15),
-                        const Text("Retrait", style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600))
+                        Icon(Icons.arrow_upward, size: 50, color: Colors.white,),
+                        SizedBox(height: 15),
+                        Text("Retrait", style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600,color: Colors.white))
                       ],
                     ),
+                  )
+                ],
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  Container(
+                    padding: const EdgeInsets.all(10),
+                    margin: EdgeInsets.only(top: 20),
+                    width: 150,
+                    height: 150,
+                    decoration: BoxDecoration(
+                        color: Color(0xFF325573),
+                        borderRadius: BorderRadius.circular(10),
+                        boxShadow: const [
+                          BoxShadow(
+                            color: Colors.black12,
+                            blurRadius: 10,
+                          )
+                        ]
+                    ),
+                    child: const Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Icon(Icons.compare_arrows, size: 50, color: Colors.white,),
+                        SizedBox(height: 15),
+                        Text("Transfert", style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600,color: Colors.white))
+                      ],
+                    ),
+                  ),
+                  Container(
+                    width: 150,
+                    height: 150,
                   )
                 ],
               )

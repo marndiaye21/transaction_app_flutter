@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:transfert/home/recents_transactions.dart';
+import 'package:transfert/home/search_section.dart';
 import 'package:transfert/home/service_section.dart';
 import 'package:transfert/home/transaction_section.dart';
 import 'package:transfert/widgets/drawer.dart';
@@ -16,14 +17,15 @@ class Home extends StatelessWidget {
         backgroundColor: Colors.white,
         centerTitle: true,
         iconTheme: const IconThemeData(color: Colors.black87),
-        title: const Text("Transaction",
+        title: const Text("Home",
             style:
-                TextStyle(color: Colors.black87, fontWeight: FontWeight.bold)),
+                TextStyle(color: Colors.black87, fontWeight: FontWeight.bold,fontSize: 20)),
       ),
-      body: Container(
+      body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            const SearchSection(),
             RecentTransactionSection(),
             const ServiceSection(),
             const TransactionSection(),

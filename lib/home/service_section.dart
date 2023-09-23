@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:transfert/account/add_account.dart';
+import 'package:transfert/customer/add_customer.dart';
 
 class ServiceSection extends StatelessWidget {
   const ServiceSection({super.key});
@@ -29,30 +31,6 @@ class ServiceSection extends StatelessWidget {
                     width: 150,
                     height: 150,
                     decoration: BoxDecoration(
-                      color: Colors.white70,
-                      borderRadius: BorderRadius.circular(10),
-                      boxShadow: const [
-                        BoxShadow(
-                          color: Colors.black12,
-                          blurRadius: 10,
-                        )
-                      ]
-                    ),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Icon(const IconData(0xe040, fontFamily: 'MaterialIcons'), size: 50, color: Colors.cyan[800],),
-                        const SizedBox(height: 15),
-                        const Text("Ouvrir un compte", style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600))
-                      ],
-                    ),
-                  ),
-
-                  Container(
-                    padding: const EdgeInsets.all(10),
-                    width: 150,
-                    height: 150,
-                    decoration: BoxDecoration(
                         color: Colors.white70,
                         borderRadius: BorderRadius.circular(10),
                         boxShadow: const [
@@ -60,17 +38,72 @@ class ServiceSection extends StatelessWidget {
                             color: Colors.black12,
                             blurRadius: 10,
                           )
-                        ]
+                        ]),
+                    child: InkWell(
+                      onTap: () {
+                        showModalBottomSheet(
+                            context: context,
+                            builder: (BuildContext context) {
+                              return AddAccount();
+                            });
+                      },
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Icon(
+                            const IconData(0xe040, fontFamily: 'MaterialIcons'),
+                            size: 50,
+                            color: Colors.cyan[800],
+                          ),
+                          const SizedBox(height: 15),
+                          const Text("Ouvrir un compte",
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                  fontSize: 16, fontWeight: FontWeight.w600))
+                        ],
+                      ),
                     ),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Icon(const IconData(0xe043, fontFamily: 'MaterialIcons'), size: 50, color: Colors.cyan[800],),
-                        const SizedBox(height: 15),
-                        const Text("Ajouter un client", style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600))
-                      ],
-                    ),
-                  )
+                  ),
+                  Container(
+                      padding: const EdgeInsets.all(10),
+                      width: 150,
+                      height: 150,
+                      decoration: BoxDecoration(
+                          color: Colors.white70,
+                          borderRadius: BorderRadius.circular(10),
+                          boxShadow: const [
+                            BoxShadow(
+                              color: Colors.black12,
+                              blurRadius: 10,
+                            )
+                          ]),
+                      child: InkWell(
+                        onTap: () {
+                          showModalBottomSheet(
+                              context: context,
+                              builder: (BuildContext context) {
+                                return const  AddCustomer();
+                              });
+                        },
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Icon(
+                              const IconData(0xe043,
+                                  fontFamily: 'MaterialIcons'),
+                              size: 50,
+                              color: Colors.cyan[800],
+                            ),
+                            const SizedBox(height: 15),
+                            const Text("Ajouter un client",
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                    fontSize: 16, fontWeight: FontWeight.w600))
+                          ],
+                        ),
+                      ))
                 ],
               )
             ],

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:transfert/account/list_account.dart';
+import 'package:transfert/recent_transaction/recent_transaction.dart';
 
 class RecentTransactionSection extends StatelessWidget {
   RecentTransactionSection({super.key});
@@ -25,21 +27,30 @@ class RecentTransactionSection extends StatelessWidget {
                         fontSize: 20,
                         fontWeight: FontWeight.w500,
                         color: Colors.black87)),
-                Row(
-                  children: [
-                    Text("Voir plus",
-                        style: TextStyle(
-                            fontSize: 13,
-                            decoration: TextDecoration.underline,
-                            color: Colors.cyan[800])),
-                    const SizedBox(width: 3),
-                    Icon(
-                      Icons.arrow_forward_ios,
-                      size: 12,
-                      color: Colors.cyan[800],
-                    )
-                  ],
-                )
+               InkWell(
+                 onTap: () {
+                   Navigator.of(context).push(
+                     MaterialPageRoute(
+                       builder: (context) => const RecentTransaction()
+                     ),
+                   );
+                 },
+                 child:  Row(
+                   children: [
+                     Text("Voir plus",
+                         style: TextStyle(
+                             fontSize: 13,
+                             decoration: TextDecoration.underline,
+                             color: Colors.cyan[800])),
+                     const SizedBox(width: 3),
+                     Icon(
+                       Icons.arrow_forward_ios,
+                       size: 12,
+                       color: Colors.cyan[800],
+                     )
+                   ],
+                 ),
+               )
               ],
             )),
         SingleChildScrollView(
