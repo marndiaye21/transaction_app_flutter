@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:transfert/account/list_account.dart';
-import 'package:transfert/customer/list_customer.dart';
-import 'package:transfert/transaction/transaction.dart';
+import 'package:transfert/ui/account/list_account.dart';
+import 'package:transfert/ui/customer/list_customer.dart';
+import 'package:transfert/ui/transaction/transaction.dart';
 
 class DrawerWidget extends StatelessWidget {
    DrawerWidget({super.key});
 
   List<Map<String ,dynamic>> menus=[
-    {'icon':const IconData(0xe043, fontFamily: 'MaterialIcons'),'nom':'Client','page':const ListCustomer() },
+    {'icon':const IconData(0xe043, fontFamily: 'MaterialIcons'),'nom':'Client','page': ListCustomer() },
     {'icon':const IconData(0xe040, fontFamily: 'MaterialIcons'),'nom':'Compte','page':const ListAccount()},
     {'icon':const IconData(0xf05d6, fontFamily: 'MaterialIcons'),'nom':'Transaction','page':const Transaction()},
     {'icon':Icons.settings,'nom':'Paramètres'},

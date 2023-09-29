@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:transfert/transaction/deposit.dart';
+import 'package:transfert/ui/transaction/deposit.dart';
 
 class TransactionSection extends StatelessWidget {
   const TransactionSection({super.key});
@@ -30,7 +30,7 @@ class TransactionSection extends StatelessWidget {
                     width: 150,
                     height: 150,
                     decoration: BoxDecoration(
-                        color: Color(0xDF283959),
+                        color: const Color(0xDF283959),
                         borderRadius: BorderRadius.circular(10),
                         boxShadow: const [
                           BoxShadow(
@@ -43,7 +43,7 @@ class TransactionSection extends StatelessWidget {
                       onTap: () {
                         Navigator.of(context).push(
                           MaterialPageRoute(
-                              builder: (context) => DepositPage()
+                              builder: (context) => const DepositPage()
                           ),
                         );
                       },
@@ -63,7 +63,7 @@ class TransactionSection extends StatelessWidget {
                     width: 150,
                     height: 150,
                     decoration: BoxDecoration(
-                        color: Color(0xFF24A68E),
+                        color: const Color(0xFF24A68E),
                         borderRadius: BorderRadius.circular(10),
                         boxShadow: const [
                           BoxShadow(
@@ -88,11 +88,11 @@ class TransactionSection extends StatelessWidget {
                 children: [
                   Container(
                     padding: const EdgeInsets.all(10),
-                    margin: EdgeInsets.only(top: 20),
+                    margin: const EdgeInsets.only(top: 20),
                     width: 150,
                     height: 150,
                     decoration: BoxDecoration(
-                        color: Color(0xFF325573),
+                        color: const Color(0xFF325573),
                         borderRadius: BorderRadius.circular(10),
                         boxShadow: const [
                           BoxShadow(
@@ -110,7 +110,7 @@ class TransactionSection extends StatelessWidget {
                       ],
                     ),
                   ),
-                  Container(
+                  const SizedBox(
                     width: 150,
                     height: 150,
                   )

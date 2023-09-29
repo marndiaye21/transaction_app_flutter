@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:transfert/home/recents_transactions.dart';
-import 'package:transfert/home/search_section.dart';
-import 'package:transfert/home/service_section.dart';
-import 'package:transfert/home/transaction_section.dart';
-import 'package:transfert/widgets/drawer.dart';
+import 'package:transfert/ui/home/recents_transactions.dart';
+import 'package:transfert/ui/home/search_section.dart';
+import 'package:transfert/ui/home/service_section.dart';
+import 'package:transfert/ui/home/transaction_section.dart';
+import 'package:transfert/ui/widgets/drawer.dart';
 
 class Home extends StatelessWidget {
   const Home({super.key});

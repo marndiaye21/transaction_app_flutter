@@ -12,15 +12,15 @@ class AddAccount extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.all(10),
+      padding: EdgeInsets.only(top: 10, left: 10, right: 10, bottom: MediaQuery.of(context).viewInsets.bottom),
       decoration: const BoxDecoration(
         borderRadius: BorderRadius.only(
             topRight: Radius.circular(28), topLeft: Radius.circular(28)),
         color: Color(0XFF3F7373),
       ),
       width: double.infinity,
-      height: 900,
       child: Column(
+        mainAxisSize: MainAxisSize.min,
         children: [
           const Icon(
             IconData(0xe040, fontFamily: 'MaterialIcons'),

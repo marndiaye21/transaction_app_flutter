@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:transfert/account/add_account.dart';
-import 'package:transfert/customer/add_customer.dart';
+import 'package:transfert/ui/account/add_account.dart';
+import 'package:transfert/ui/customer/add_customer.dart';
 
 class ServiceSection extends StatelessWidget {
   const ServiceSection({super.key});
@@ -42,6 +42,7 @@ class ServiceSection extends StatelessWidget {
                     child: InkWell(
                       onTap: () {
                         showModalBottomSheet(
+                            isScrollControlled: true,
                             context: context,
                             builder: (BuildContext context) {
                               return AddAccount();
@@ -81,6 +82,7 @@ class ServiceSection extends StatelessWidget {
                       child: InkWell(
                         onTap: () {
                           showModalBottomSheet(
+                            isScrollControlled: true,
                               context: context,
                               builder: (BuildContext context) {
                                 return const  AddCustomer();

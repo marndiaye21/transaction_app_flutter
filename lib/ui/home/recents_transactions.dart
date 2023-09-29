@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:transfert/account/list_account.dart';
-import 'package:transfert/recent_transaction/recent_transaction.dart';
+import 'package:transfert/ui/recent_transaction/recent_transaction.dart';
 
 class RecentTransactionSection extends StatelessWidget {
   RecentTransactionSection({super.key});
