@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:provider/provider.dart';
+import 'package:transfert/blocs/customer_bloc.dart';
+import 'package:transfert/blocs/customer_events.dart';
+import 'package:transfert/models/customer.dart';
 import 'package:transfert/providers/custumer_provider.dart';
 import 'package:transfert/ui/customer/list_customer.dart';
 
@@ -16,9 +20,7 @@ class _AddCustomerState extends State<AddCustomer> {
   TextEditingController phoneController = TextEditingController();
   TextEditingController identityNumberController = TextEditingController();
 
-  void addClient(BuildContext context) async {
-
-  }
+  void addClient(BuildContext context) async {}
 
   @override
   Widget build(BuildContext context) {
@@ -64,15 +66,15 @@ class _AddCustomerState extends State<AddCustomer> {
                             IconData(0xe491, fontFamily: 'MaterialIcons'),
                             color: Colors.white70)),
                     Expanded(
-                      child: TextFormField(
+                        child: TextFormField(
                       validator: (value) {
                         if (value == null || value.isEmpty) {
                           return "Veuillez saisir le nom du client";
                         }
                         return null;
                       },
-                        controller: fullnameController,
-                       style: const TextStyle(color: Colors.white70),
+                      controller: fullnameController,
+                      style: const TextStyle(color: Colors.white70),
                       decoration: const InputDecoration(
                           hintText: "Nom complet",
                           hintStyle: TextStyle(color: Colors.white70),
@@ -109,8 +111,8 @@ class _AddCustomerState extends State<AddCustomer> {
                         }
                         return null;
                       },
-                       controller: phoneController,
-                       style: const TextStyle(color: Colors.white70),
+                      controller: phoneController,
+                      style: const TextStyle(color: Colors.white70),
                       decoration: const InputDecoration(
                           hintText: "Téléphone",
                           hintStyle: TextStyle(color: Colors.white70),
@@ -170,12 +172,16 @@ class _AddCustomerState extends State<AddCustomer> {
                 child: ElevatedButton(
                   onPressed: () {
                     if (_formKey.currentState!.validate()) {
-                      CustomerProvider customerProvider = context.read<CustomerProvider>();
-                      customerProvider.addCustomer(fullnameController.text, phoneController.text, identityNumberController.text);
+                      BlocProvider.of<CustomerBloc>(context).add(CustomerAddEvent(
+                          fullnameController.text,
+                          phoneController.text,
+                          identityNumberController.text
+                      ));
                       Navigator.of(context).pop();
                       ScaffoldMessenger.of(context).showSnackBar(
                         SnackBar(
-                          content: const Text('Ajout de client en cours...', style: TextStyle(color: Colors.white70)),
+                          content: const Text('Ajout de client en cours...',
+                              style: TextStyle(color: Colors.white70)),
                           backgroundColor: Colors.cyan[800],
                           padding: const EdgeInsets.all(10),
                           elevation: 10,

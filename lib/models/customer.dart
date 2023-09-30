@@ -35,6 +35,10 @@ class Customer {
   String? get phone => _phone;
   String? get identityNumber => _identityNumber;
 
+  set setId (String newId) {
+    _id = newId;
+  }
+
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
     map['id'] = _id;

@@ -12,8 +12,8 @@ class CustomerProvider extends ChangeNotifier {
   }
 
   addCustomer(String fullname, String phone, String identityNumber) async {
-    Customer customer = await CustomerRepository().add(fullname, phone, identityNumber);
-    customers.add(customer);
+    Customer? customer = await CustomerRepository().add(fullname, phone, identityNumber);
+    customers.add(customer!);
     notifyListeners();
   }
 }

@@ -1,9 +1,14 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:provider/provider.dart';
+import 'package:transfert/blocs/customer_bloc.dart';
+import 'package:transfert/blocs/customer_events.dart';
+import 'package:transfert/blocs/customer_states.dart';
 import 'package:transfert/models/customer.dart';
 import 'package:transfert/providers/custumer_provider.dart';
+import 'package:transfert/ui/widgets/customer_item.dart';
 
 class ListCustomer extends StatelessWidget {
   ListCustomer({super.key});
@@ -23,53 +28,32 @@ class ListCustomer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    CustomerProvider customerProvider = context.read<CustomerProvider>();
-    customerProvider.getCustomers();
-
+    context.read<CustomerBloc>().add(CustomerListEvent());
     return Scaffold(
       backgroundColor: const Color(0xFFF6F6F6),
       appBar: AppBar(
         title: const Text("Clients"),
         centerTitle: true,
       ),
-      body: Consumer<CustomerProvider>(
-        builder: (context, customer, child) {
-          return customer.customers.isEmpty ? const Center(child: CircularProgressIndicator()) : ListView.builder(
-              itemCount: customerProvider.customers.length,
-              itemBuilder: (context, index) {
-                Random random = Random();
-                int randomNumber = random.nextInt(colors.length);
-                return Container(
-                  margin: const EdgeInsets.only(left: 5, right: 5, bottom: 5),
-                  padding: const EdgeInsets.all(10),
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10),
-                      color: Colors.white,
-                      boxShadow: const [
-                        BoxShadow(color: Colors.black26, blurRadius: 2)
-                      ]),
-                  child: ListTile(
-                    title: Text(
-                      customerProvider.customers[index].fullname as String,
-                      style: const TextStyle(
-                          fontSize: 18, fontWeight: FontWeight.w500),
-                    ),
-                    trailing:
-                        Text(customerProvider.customers[index].phone as String),
-                    leading: Container(
-                      width: 30,
-                      height: 30,
-                      decoration: BoxDecoration(
-                          shape: BoxShape.circle, color: colors[randomNumber]),
-                      child: Center(
-                          child: Text(
-                              customerProvider.customers[index].fullname![0],
-                              style: const TextStyle(
-                                  fontSize: 22, color: Colors.white))),
-                    ),
-                  ),
-                );
-              });
+      body: BlocBuilder<CustomerBloc, CustomerState>(
+        builder: (context, state) {
+          if (state is CustomersLoadingState) {
+            return const Center(child: CircularProgressIndicator());
+          }
+          if (state is CustomersLoadedState) {
+            return ListView.builder(
+                itemCount: state.customers.length,
+                itemBuilder: (context, index) {
+                  Random random = Random();
+                  int randomNumber = random.nextInt(colors.length);
+                  return CustomerItem(
+                      customerItem: state.customers[index],
+                      color: colors[randomNumber]);
+                });
+          } else if (state is CustomersErrorState) {
+            return Text(state.error!);
+          }
+          return Container();
         },
       ),
     );
